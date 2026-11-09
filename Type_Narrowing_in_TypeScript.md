@@ -3,7 +3,7 @@
 # Type Narrowing in TypeScript
 
 ## What is Type Narrowing?
-is a process of TypeScript that justifing type of a variable and come out accurate type.
+Type Narrowing is a process of TypeScript that justifing type of a variable and come out accurate type.
 Let, Make a function, which can get both String and Number.
 
 ```
