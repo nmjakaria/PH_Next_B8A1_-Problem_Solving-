@@ -24,10 +24,27 @@ function concatenateArrays(...arrays) {
 function getPopularCourses(courses, minStudents) {
     return courses.filter((course) => course.isPublished && course.students >= minStudents);
 }
-const courses = [
-    { title: "TypeScript Mastery", students: 120, isPublished: true },
-    { title: "Draft Course", students: 200, isPublished: false },
-    { title: "Basic HTML", students: 45, isPublished: true },
-    { title: "Next.js Pro", students: 85, isPublished: true }
-];
-console.log(getPopularCourses(courses, 30));
+function pluckValues(items, key) {
+    return items.map((item) => item[key]);
+}
+class Employee {
+    name;
+    baseSalary;
+    constructor(name, baseSalary) {
+        this.name = name;
+        this.baseSalary = baseSalary;
+    }
+    getDetails() {
+        return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`;
+    }
+}
+class Manager extends Employee {
+    department;
+    constructor(name, baseSalary, department) {
+        super(name, baseSalary);
+        this.department = department;
+    }
+    getRoleInfo() {
+        return `Manager of ${this.department}: ${this.name}`;
+    }
+}

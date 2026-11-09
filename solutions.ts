@@ -4,16 +4,16 @@ function multiplyValue(value: number, multiplier?: number): number {
 
 
 function processInput(value: string | number | boolean): string | number {
-    if (typeof value === "string"){
+    if (typeof value === "string") {
         return value.trim().toLowerCase()
     }
 
-    if (typeof value === "number"){
+    if (typeof value === "number") {
         return value * 10;
     }
 
-    if (typeof value === "boolean"){
-        return value? "Active" : "Inactive";
+    if (typeof value === "boolean") {
+        return value ? "Active" : "Inactive";
     }
 
     return value;
@@ -27,9 +27,10 @@ function formatCoordinate(coordinate: readonly [number, number, string]): string
 }
 
 
-function concatenateArrays<T>(...arrays: T[][]):T[] {
+function concatenateArrays<T>(...arrays: T[][]): T[] {
     return arrays.flat();
 }
+
 
 
 interface Course {
@@ -42,11 +43,37 @@ function getPopularCourses(courses: Course[], minStudents: number): Course[] {
     return courses.filter((course) => course.isPublished && course.students >= minStudents);
 }
 
-const courses: Course[] = [
-  { title: "TypeScript Mastery", students: 120, isPublished: true },
-  { title: "Draft Course", students: 200, isPublished: false },
-  { title: "Basic HTML", students: 45, isPublished: true },
-  { title: "Next.js Pro", students: 85, isPublished: true }
-];
 
-console.log(getPopularCourses(courses, 30));
+function pluckValues<T, K extends keyof T>(items: T[], key: K): T[K][] {
+    return items.map((item) => item[key]);
+}
+
+
+
+class Employee {
+    protected name: string;
+    private baseSalary: number;
+
+    constructor(name: string, baseSalary: number){
+        this.name = name;
+        this.baseSalary = baseSalary;
+    }
+
+    getDetails():string {
+        return `Employee: ${this.name}, Base Salary: ${this.baseSalary}`;
+    }
+}
+
+class Manager extends Employee{
+    private department: string;
+
+    constructor(name: string,  baseSalary: number, department: string){
+        super(name, baseSalary);
+        this.department = department;
+    }
+
+    getRoleInfo():string {
+        return `Manager of ${this.department}: ${this.name}`;
+    }
+}
+
